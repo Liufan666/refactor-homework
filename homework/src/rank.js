@@ -1,10 +1,9 @@
 function voyageRisk (voyage) {
   let result = 1;
-  if (voyage.length > 4) {
+  if (voyage.length > 4 && voyage.length <= 8) {
     result += 2;
-  }
-  if (voyage.length > 8) {
-    result += voyage.length - 8;
+  }else if(voyage.length > 8){
+    result += voyage.length - 6;
   }
   if (isVoyageZoneINchinaOReastindies(voyage)) {
     result += 4;
