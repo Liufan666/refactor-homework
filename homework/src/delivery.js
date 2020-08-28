@@ -10,11 +10,7 @@ function deliveryDate (anOrder, isRush) {
 module.exports = {deliveryDate};
 function getDaysWithIsRushIsFalse(anOrder) {
   let deliveryTime;
-  if ([
-    'MA',
-    'CT',
-    'NY',
-  ].includes(anOrder.deliveryState)) {
+  if (isInMAorCTorNY(anOrder)) {
     deliveryTime = 2;
   }
   else if ([
@@ -27,6 +23,14 @@ function getDaysWithIsRushIsFalse(anOrder) {
     deliveryTime = 4;
   }
   return anOrder.placedOn.plusDays(2 + deliveryTime);
+}
+
+function isInMAorCTorNY(anOrder) {
+  return [
+    'MA',
+    'CT',
+    'NY',
+  ].includes(anOrder.deliveryState);
 }
 
 function getDaysWithIsRushIsTrue(anOrder) {
