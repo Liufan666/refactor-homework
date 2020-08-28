@@ -8,6 +8,14 @@ function printOwing(invoice) {
   recordDueDate(invoice);
 
   // print details
+  return printDetails(invoice, outstanding);
+}
+
+module.exports = {
+  printOwing,
+};
+
+function printDetails(invoice, outstanding) {
   let result = '***********************\n' +
     '**** Customer Owes ****\n' +
     '***********************\n' +
@@ -17,10 +25,6 @@ function printOwing(invoice) {
   console.log(result);
   return result;
 }
-
-module.exports = {
-  printOwing,
-};
 
 function recordDueDate(invoice) {
   const today = new Date();
