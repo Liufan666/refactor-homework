@@ -41,16 +41,7 @@ function voyageProfitFactor (voyage, history) {
     result += 1;
   }
   if (voyage.zone === 'china' && hasChina(history)) {
-    result += 3;
-    if (history.length > 10) {
-      result += 1;
-    }
-    if (voyage.length > 12) {
-      result += 1;
-    }
-    if (voyage.length > 18) {
-      result -= 1;
-    }
+    result += getResultWithZoneIsChinaAndHaschanaHistory(history, voyage);
   }
   else {
     if (history.length > 8) {
@@ -59,6 +50,20 @@ function voyageProfitFactor (voyage, history) {
     if (voyage.length > 14) {
       result -= 1;
     }
+  }
+  return result;
+}
+
+function getResultWithZoneIsChinaAndHaschanaHistory(history, voyage) {
+  let result = 3;
+  if (history.length > 10) {
+    result += 1;
+  }
+  if (voyage.length > 12) {
+    result += 1;
+  }
+  if (voyage.length > 18) {
+    result -= 1;
   }
   return result;
 }
