@@ -39,10 +39,7 @@ function isInMAorCTorNY(anOrder) {
 
 function getDaysWithIsRushIsTrue(anOrder) {
   let deliveryTime;
-  if ([
-    'MA',
-    'CT',
-  ].includes(anOrder.deliveryState)) {
+  if (isInMAorCT(anOrder)) {
     deliveryTime = 1;
   }
   else if ([
@@ -55,5 +52,12 @@ function getDaysWithIsRushIsTrue(anOrder) {
     deliveryTime = 3;
   }
   return anOrder.placedOn.plusDays(1 + deliveryTime);
+}
+
+function isInMAorCT(anOrder) {
+  return [
+    'MA',
+    'CT',
+  ].includes(anOrder.deliveryState);
 }
 
