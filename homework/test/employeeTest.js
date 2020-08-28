@@ -6,3 +6,9 @@ employeeTest('type is manager', t => {
     const result = employee.toString();
     t.is(result, 'kevin (manager)');
 })
+
+employeeTest('type is engineer', t => {
+    let employee = new Employee('kevin', 'engineer');
+    const result = employee.toString();
+    t.is(result, 'kevin (engineer)');
+})
