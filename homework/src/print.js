@@ -1,4 +1,4 @@
-function printOwing (invoice) {
+function printOwing(invoice) {
   let outstanding = 0;
   console.log('***********************');
   console.log('**** Customer Owes ****');
@@ -17,4 +17,16 @@ function printOwing (invoice) {
   console.log(`name: ${invoice.customer}`);
   console.log(`amount: ${outstanding}`);
   console.log(`amount: ${invoice.dueDate.toLocaleDateString()}`);
+  let result = '***********************\n' +
+    '**** Customer Owes ****\n' +
+    '***********************\n' +
+    `name: ${invoice.customer}\n` +
+    `amount: ${outstanding}\n` +
+    `amount: ${invoice.dueDate.toLocaleDateString()}\n`;
+  console.log(result);
+  return result;
 }
+
+module.exports = {
+  printOwing,
+};
