@@ -1,13 +1,7 @@
 function printOwing(invoice) {
   let outstanding = 0;
-
-  // calculate outstanding
   outstanding = calculateOutstanding(invoice, outstanding);
-
-  // record due date
   recordDueDate(invoice);
-
-  // print details
   return printDetails(invoice, outstanding);
 }
 
