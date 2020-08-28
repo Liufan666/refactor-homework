@@ -5,8 +5,7 @@ function printOwing(invoice) {
   outstanding = calculateOutstanding(invoice, outstanding);
 
   // record due date
-  const today = new Date();
-  invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
+  recordDueDate(invoice);
 
   // print details
   let result = '***********************\n' +
@@ -22,6 +21,11 @@ function printOwing(invoice) {
 module.exports = {
   printOwing,
 };
+
+function recordDueDate(invoice) {
+  const today = new Date();
+  invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
+}
 
 function calculateOutstanding(invoice, outstanding) {
   for (const o of invoice.borderSpacing) {
