@@ -42,16 +42,20 @@ function getDaysWithIsRushIsTrue(anOrder) {
   if (isInMAorCT(anOrder)) {
     deliveryTime = 1;
   }
-  else if ([
-    'NY',
-    'NH',
-  ].includes(anOrder.deliveryState)) {
+  else if (isInNYorNH(anOrder)) {
     deliveryTime = 2;
   }
   else {
     deliveryTime = 3;
   }
   return anOrder.placedOn.plusDays(1 + deliveryTime);
+}
+
+function isInNYorNH(anOrder) {
+  return [
+    'NY',
+    'NH',
+  ].includes(anOrder.deliveryState);
 }
 
 function isInMAorCT(anOrder) {
